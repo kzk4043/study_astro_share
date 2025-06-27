@@ -8,15 +8,170 @@
 		<title>Astro Basics</title>
 	</head>
 	<body>
+		<header class="header">
+			<div class="hamburger-button">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+			<h1 class="header-title">
+				<a href="/" class="link">DeltaX frontend team workshop</a>
+			</h1>
+			<nav class="header-nav">
+				<ul>
+					<li><a href="/" class="link">Top</a></li>
+					<li><a href="/button" class="link">Button</a></li>
+				</ul>
+			</nav>
+		</header>
 		<slot />
 	</body>
 </html>
 
+<script>
+	const hamburgerButton = document.querySelector(".hamburger-button");
+	hamburgerButton?.addEventListener("click", () => {
+		hamburgerButton.classList.toggle("active");
+	});
+	const headerNav = document.querySelector(".header-nav");
+	hamburgerButton?.addEventListener("click", () => {
+		headerNav?.classList.toggle("active");
+	});
+</script>
+
 <style>
 	html,
 	body {
-		margin: 0;
+		margin-top: 60px;
 		width: 100%;
-		height: 100%;
+	}
+
+	.header {
+		display: flex;
+		align-items: center;
+		gap: 1.5rem;
+		padding: 0 1.5rem;
+		background-color: #9e9e9e;
+		color: #fff;
+		height: 60px;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: 1000;
+		box-sizing: border-box;
+	}
+
+	.hamburger-button {
+		position: relative;
+		width: 20px;
+		height: 20px;
+		cursor: pointer;
+	}
+	.hamburger-button span {
+		position: absolute;
+		left: 0;
+		width: 100%;
+		height: 4px;
+		background-color: #fff;
+		border-radius: 4px;
+	}
+	.hamburger-button,
+	.hamburger-button span {
+		display: inline-block;
+		transition: all 0.5s;
+		box-sizing: border-box;
+	}
+	.hamburger-button span:nth-of-type(1) {
+		top: 0;
+	}
+	.hamburger-button span:nth-of-type(2) {
+		top: 50%;
+		transform: translateY(-50%);
+	}
+	.hamburger-button span:nth-of-type(3) {
+		bottom: 0;
+	}
+	.hamburger-button::after {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		display: block;
+		content: "";
+		width: 40px;
+		height: 40px;
+		transform: translate(-50%, -50%);
+		border-radius: 50%;
+		border: 2px solid transparent;
+		transition: all 0.75s;
+	}
+	.hamburger-button.active span:nth-of-type(1) {
+		transform: translateY(8px) rotate(-45deg);
+	}
+	.hamburger-button.active span:nth-of-type(2) {
+		left: 60%;
+		opacity: 0;
+		animation: active-btn19-bar02 0.8s forwards;
+	}
+	@-webkit-keyframes active-btn19-bar02 {
+		100% {
+			height: 0;
+		}
+	}
+	@keyframes active-btn19-bar02 {
+		100% {
+			height: 0;
+		}
+	}
+	.hamburger-button.active span:nth-of-type(3) {
+		transform: translateY(-8px) rotate(45deg);
+	}
+	.hamburger-button.active::after {
+		animation: active-btn19 0.7s 0.25s forwards;
+	}
+	@keyframes active-btn19 {
+		0% {
+			border-color: transparent;
+			transform: translate(-50%, -50%) rotate(0);
+		}
+		25% {
+			border-color: transparent #fff transparent transparent;
+		}
+		50% {
+			border-color: transparent #fff #fff transparent;
+		}
+		75% {
+			border-color: transparent #fff #fff #fff;
+		}
+		100% {
+			border-color: #fff;
+			transform: translate(-50%, -50%) rotate(-360deg);
+		}
+	}
+
+	.header-title {
+		margin: 0;
+		font-size: 1.2rem;
+		font-weight: normal;
+
+		> .link {
+			color: #fff;
+			text-decoration: none;
+		}
+	}
+
+	.header-nav {
+		position: fixed;
+		top: 60px;
+		left: 0;
+		width: 100%;
+		height: 0;
+		background-color: #9e9e9e;
+		transition: height 0.15s linear;
+		overflow: clip;
+	}
+	.header-nav.active {
+		opacity: 1;
+		height: calc(100% - 60px);
 	}
 </style>
