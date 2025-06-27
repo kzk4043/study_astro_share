@@ -1,0 +1,58 @@
+---
+import Button_kzk4043 from "@/components/button/Button_kzk4043.astro";
+import Button_sakadume from "@/components/button/Button_sakadume.astro";
+import Button_okuyama from "@/components/button/Button_okuyama.astro";
+import Button_murak from "@/components/button/Button_murak.astro";
+import Button_matsushima from "@/components/button/Button_matsushima.astro";
+import Button_nakajima from "@/components/button/Button_nakajima.astro";
+import Button_nakamura from "@/components/button/Button_nakamura.astro";
+import Button_d_kaneiri from "@/components/button/Button_d_kaneiri.astro";
+import Button_furushima from "@/components/button/Button_furushima.astro";
+import Button_y_asahi from "@/components/button/Button_y_asahi.astro";
+import Layout from "@/layouts/Layout.astro";
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+---
+
+<Layout>
+	<div class="wrapper">
+		<p>Button_d_kaneiri</p>
+		<Button_d_kaneiri />
+
+		<p>Button_furushima</p>
+		<Button_furushima />
+
+		<p>Button_kzk4043</p>
+		<Button_kzk4043 />
+
+		<p>Button_sakadume</p>
+		<Button_sakadume />
+
+		<p>Button_matsushima</p>
+		<Button_matsushima />
+
+		<p>Button_murak</p>
+		<Button_murak />
+
+		<p>Button_okuyama</p>
+		<Button_okuyama />
+
+		<p>Button_nakajima</p>
+		<Button_nakajima label="hoge" />
+
+		<p>Button_nakamura</p>
+		<Button_nakamura />
+
+		<p>Button_y_asahi</p>
+		<Button_y_asahi class="btn" />
+	</div>
+</Layout>
+
+<style>
+	.wrapper {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+</style>
